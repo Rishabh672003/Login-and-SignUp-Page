@@ -5,26 +5,306 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="Signup.css" />
+    <link rel="stylesheet" href="navbar.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+      body {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        background-color: #171f24;
+        font-family: "lato", sans-serif;
+        font-weight: 500;
+        /*   font-family: Arial ; */
+      }
+
+      .signupFrm {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .form {
+        background-color: #121212;
+        width: 400px;
+        border-radius: 8px;
+        padding: 20px 40px;
+        box-shadow: 0 10px 25px rgba(92, 99, 105, 0.2);
+      }
+
+      .title {
+        color: whitesmoke;
+        font-size: 30px;
+        margin-bottom: 50px;
+        /*   margin-left: 60px ; */
+        text-align: center;
+      }
+
+      .inputContainer {
+        position: relative;
+        height: 40px;
+        width: 90%;
+        margin-bottom: 17px;
+      }
+
+      .input {
+        color: whitesmoke;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 100%;
+        width: 100%;
+        border: 1px solid #800080;
+        border-radius: 7px;
+        font-size: 16px;
+        padding: 0 20px;
+        outline: none;
+        background: none;
+        z-index: 1;
+      }
+
+      ::placeholder {
+        color: transparent;
+      }
+
+      .passMatch {
+        color: whitesmoke;
+      }
+
+      .label {
+        position: absolute;
+        top: 12px;
+        left: 15px;
+        padding: 0 4px;
+        background-color: #121212;
+        color: whitesmoke;
+        opacity: 15%;
+        font-size: 14px;
+        transition: 0.5s;
+        z-index: 0;
+      }
+
+      .submitBtn {
+        display: block;
+        width: 100%;
+        padding: 15px 30px;
+        border: none;
+        background-color: purple;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 30px;
+      }
+
+      .or {
+        color: whitesmoke;
+        text-align: center;
+        font-family: "lato", sans-serif;
+        font-weight: 500;
+        margin-top: 5px;
+      }
+
+      .loginBtn {
+        width: 100%;
+        padding: 15px 30px;
+        border: none;
+        background-color: purple;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 15px;
+        margin-bottom: 40px;
+      }
+
+      a {
+        color: whitesmoke;
+        text-decoration: none;
+      }
+
+      .submitBtn:hover {
+        background-color: #00bd00;
+        transform: translateY(-2px);
+        font-weight: 500;
+      }
+
+      .loginBtn:hover {
+        background-color: #0040ff;
+        transform: translateY(-2px);
+        font-weight: 500;
+      }
+
+      .label:focus {
+        top: -7px;
+        left: 3px;
+        z-index: 10;
+        background-color: black;
+      }
+
+      .input:focus + .label {
+        font-size: 14px;
+        font-weight: 600;
+        color: magenta;
+      }
+
+      .input:focus {
+        border: 2px solid magenta;
+        box-shadow: 0em 0 0.9em rgba(92, 99, 105, 0.4);
+      }
+
+      .input:not(:placeholder-shown) + .label {
+        top: -17px;
+        left: 3px;
+        z-index: 10;
+        font-size: 14px;
+        font-weight: 600;
+        opacity: 50%;
+      }
+
+      .tandc {
+        color: whitesmoke;
+        font-size: 14px;
+        /*   margin-left: 20px; */
+      }
+
+      .check {
+        margin-top: 8px;
+        margin-left: 0px;
+      }
+
+      @media screen and (max-width: 480px) {
+        .check {
+          margin-left: 7px;
+        }
+        .submitBtn,
+        .loginBtn {
+          margin-left: 7px;
+        }
+      }
+
+      .navbar {
+        overflow: hidden;
+        background-color: #121212;
+      }
+
+      .navbar a {
+        float: left;
+        font-size: 16px;
+        color: whitesmoke;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      .subnav {
+        float: left;
+        overflow: hidden;
+      }
+
+      .subnav .subnavbtn {
+        /*About, Services, Partners*/
+        font-size: 14px;
+        border: none;
+        outline: none;
+        color: whitesmoke;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+      }
+
+      .navbar a:hover,
+      .subnav:hover .subnavbtn {
+        border: 1px solid magenta;
+      }
+
+      .subnav-content {
+        display: none;
+        position: absolute;
+        left: 0;
+        background-color: #121212;
+        width: 100%;
+        z-index: 1;
+      }
+
+      .subnav-content a {
+        float: left;
+        color: white;
+        text-decoration: none;
+      }
+
+      .subnav-content a:hover {
+        color: whitesmoke;
+        border: 1px solid magenta;
+      }
+
+      .subnav:hover .subnav-content {
+        display: block;
+      }
+    </style>
   </head>
 
   <body>
+    <div class="navbar">
+      <a href="#home">Home</a>
+      <div class="subnav">
+        <button class="subnavbtn">
+          About <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="subnav-content">
+          <a href="#company">Company</a>
+          <a href="#team">Team</a>
+          <a href="#careers">Careers</a>
+        </div>
+      </div>
+      <div class="subnav">
+        <button class="subnavbtn">
+          Partners <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="subnav-content">
+          <a href="#link1">Amit</a>
+          <a href="#link2">Sumit</a>
+          <a href="#link3">Rishabh</a>
+          <a href="#link4">Harshil</a>
+        </div>
+      </div>
+      <a href="Payment.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+      <a href="signup.html">Sign Up</a>
+    </div>
+
     <div class="signupFrm">
       <form
         action=""
         class="form"
         method="post"
+        name="form"
         onsubmit="return validateForm()"
       >
         <h1 class="title">Sign Up to Proceed</h1>
 
         <div class="inputContainer">
-          <input type="email" class="input" placeholder="a" required />
+          <input
+            type="email"
+            class="input"
+            placeholder="a"
+            name="Fname"
+            required
+          />
           <label for="" class="label">Email</label>
         </div>
 
         <div class="inputContainer">
-          <input type="text" class="input" placeholder="a" required />
+          <input
+            type="text"
+            class="input"
+            placeholder="a"
+            name="Fname"
+            required
+          />
           <label for="" class="label">Username</label>
         </div>
 
@@ -34,6 +314,7 @@
             class="input"
             placeholder="a"
             id="pass"
+            name="Fname"
             required
           />
           <label for="" class="label">Password</label>
@@ -45,6 +326,7 @@
             class="input"
             placeholder="a"
             id="pass2"
+            name="Fname"
             required
           />
           <label for="" class="label">Confirm Password</label>
